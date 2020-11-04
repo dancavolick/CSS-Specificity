@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Specificity</title>
+    <link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body>
+
+  <div class="view_port">
+    <div class="polling_message">
+      CSS - Specificity
+    </div>
+    <div class="cylon_eye"></div>
+  </div>
+  
+  <h2>This table details the Specificity Rules engaged within Cascading Style Sheets (CSS)</h2>
+  <h3>Specificity is the means by which browsers decide which CSS property values are the most 
+      relevant to an element and, therefore, will be applied. Specificity is based on the matching 
+      rules which are composed of different sorts of CSS selectors</h3>
+  <table>
+      <tr>
+        <th scope="col">Score</th>
+        <th scope="col">Type</th>
+        <th scope="col">Examples</th>
+        <th scope="col">Description</th>
+        <th scope="col">Notes</th>
+      </tr>
+      <tr>
+        <td>1000</td>
+        <td>Inline Styles</td>
+        <td>Keyword "style" followed by the CSS rule within the opening tag of an element within the HTML document</td>
+        <td>These appear inline within the HTML document itself and dominate any contrasting rule, for any Selector type, held on an external Stylesheet</td>
+        <td>n/a</td>
+      </tr>
+      <tr>
+        <td>0100</td>
+        <td>ID Selectors</td>
+        <td>#example, id="example"</td>
+        <td>These should appear only once in the HTML document</td>
+        <td>These rules dominate contrasting Class and Element rules</td>
+      </tr>
+      <tr>
+        <td>0010</td>
+        <td>Attribute/Class/Pseudo-Class Selectors</td>
+        <td>.example, class="example"</td>
+        <td>These can appear multiple times in the HTML document</td>
+        <td>These rules dominate those applied to Elements/Pseudo Elements</td>
+      </tr>
+      <tr>
+        <td>0001</td>
+        <td>Element/Pseudo Element Selectors</td>
+        <td>Elements/Pseudo elements: e.g. h1/:hover</td>
+        <td>These can appear multiple times in the HTML document and hold the lowest score</td>
+        <td>These rules do not dominate rules applied to any other Selectors</td>
+      </tr>
+  </table>
+
+  <h2>Key considerations</h2>
+  <ul>
+    <li><h3>Equal Scoring: If a Selector has been listed in a mutliple Selector ruleset more than once and the rules contrast, the ruleset with the highest score will dominate, for 
+        example:
+        <br>
+        Multiple ruleset one: #id.class p {color="red";}.........Score #id(100) + .class(10) + element(1) = 111
+        <br>
+        Multiple ruleset two: #id p {color="blue";}..........Score #id(100) + element(1) = 101
+        <br>
+        Multiple ruleset one will dominate as it calculates to the highest score: 111
+    </h3></li>
+    <li><h3>Duplication: If there are contrasting rules that have been set at the same level, for example, a developer has inadvertently set 2 different 
+      background-colors for the Paragraph Selector, the rule listed furthest down in the Stylesheet dominates</h3></li>
+    <li><h3>!important: If the !important rule has been applied to any Selector, that rule will dominate any contrasting rules</h3></li>
+  </ul>
+  <br>
+  <br>
+  <br>
+  <br>
+</body>
+</html>
